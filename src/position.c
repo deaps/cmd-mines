@@ -1,4 +1,5 @@
 #include "position.h"
+#include <assert.h> 
 
 void changeBit(position_t *pos, bool b, position_t mask, short int sbit)
 {
@@ -52,7 +53,26 @@ void setQuestionMark(position_t *pos, bool b)
 
 void setNumOfMines(position_t *pos, p_number_t pn)
 {
-	// to be continued...
+	// Validates if the number of mines nearby is between 0 and 8
+	if(pn > 8 || pn < 0)
+	{
+		printf("Error setting number of mines nearby!\n");
+		printf("position_t : %p\n", pos);
+		printf("Number of nearby mines : %d\n",pn);
+		exit(-1);
+	}
+
+	position_t mask;
+	position_t n1;
+	
+	// Gets the less significant bits
+	// And stores in n1 var
+	mask = 0b11110000;
+	n1 = *(pos)&mask;
+
+	// Alters the number of mines nearby of that position
+	*(pos) = n1|pn;
+
 } // setNumOfMines
 
 bool isRevealed(position_t *pos)

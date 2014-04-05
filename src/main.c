@@ -42,7 +42,10 @@ int main()
 	printf("n3: %d\n", n3);
 
 	// TEST FOR NUMOFMINES BITs
-	// to be continued...
+	position_t n4 = 148; // 10010100
+	printf("n4: %d\n", n4);
+	setNumOfMines(&n4, 8); // 10110111
+	printf("n4: %d\n", n4);
 	
 	printf("Hello World!!!\n");
 	return 0;
