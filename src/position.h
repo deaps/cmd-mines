@@ -19,8 +19,13 @@
  * bits 5-8 : Number of nearby mines
  *
  * Author: João Andrade (joaodeaps@gmail.com)
- * version: 1
+ * version: 2
  */
+
+ /*
+  * This typedef represents a position in the board.
+  * It uses ALL of its bits.
+  */
 typedef unsigned char position_t;
 
 /*
@@ -29,27 +34,129 @@ typedef unsigned char position_t;
  */
 typedef unsigned char p_number_t;
 
-void changeBit(position_t *pos, bool b, position_t mask, short int sbit);
-//set revealed
+/*
+ * This function changes the value of the selected bit of the position.
+ *
+ * @param position_t *pos - Pointer to the position we want to make changes
+ * @param bool b          - New value to store in the wanted bit (1 or 0)
+ * @param short int sbit  - Bit position between 5-8 (You cannot change the
+ *                          1-4 bits because it represents the number of mines
+ *                          nearby that position, to change that value see
+ *                          the setNumOfMines() function).
+ */
+void changeBit(position_t *pos, bool b, short int sbit);
+
+/*
+ * getBitInfo return the value of the selected bit.
+ * If sbit is between 5 and 8, it will return the value of that bit.
+ * If sbit is between 1 and 4, it will return the value in the four
+ * less significant bits. That is the number of mines nearby that
+ * position.
+ *
+ * @param position_t pos - This is the position we want to get the info.
+ * @param short int sbit - This is the bit position.
+ * @return p_number_t    - Value of the selected bit.
+ */
+p_number_t getBitInfo(position_t pos, short int sbit);
+
+/*
+ * setRevealed function changes the most significant bit, that
+ * represents if the position is or not revealed, of the pos
+ * position.
+ * 
+ * @param position_t *pos - This is the position we want to change the info.
+ * @param bool b          - New value to store in the wanted bit (1 or 0)
+ */
 void setRevealed(position_t *pos, bool b);
-//set mine
+
+/*
+ * setMine function changes the second most significant bit, that
+ * represents if the position have or not a mine, of the pos
+ * position.
+ * 
+ * @param position_t *pos - This is the position we want to change the info.
+ * @param bool b          - New value to store in the wanted bit (1 or 0)
+ */
 void setMine(position_t *pos, bool b);
-//set flag
+
+/*
+ * setFlag function changes the third most significant bit, that
+ * represents if the position have or not a flag, of the pos
+ * position.
+ * 
+ * @param position_t *pos - This is the position we want to change the info.
+ * @param bool b          - New value to store in the wanted bit (1 or 0)
+ */
 void setFlag(position_t *pos, bool b);
-//set question mark
+
+/*
+ * setQuestionMark function changes the fourth most significant bit, that
+ * represents if the position have or not a question mark, of the pos
+ * position.
+ * 
+ * @param position_t *pos - This is the position we want to change the info.
+ * @param bool b          - New value to store in the wanted bit (1 or 0)
+ */
 void setQuestionMark(position_t *pos, bool b);
-//set number of nearby mines
+
+/*
+ * This function set the number of mines nearby that position.
+ * The number of mines nearby is represented by the 4 less significant
+ * bits of position_t pos.
+ * 
+ * @param position_t *pos - This is the position we want to change the info.
+ * @param p_number_t pn   - Number of mines nearby.
+ */
 void setNumOfMines(position_t *pos, p_number_t pn);
 
-//is revealed
-bool isRevealed(position_t *pos);
-//is mine
-bool isMine(position_t *pos);
-//is flag
-bool isFlag(position_t *pos);
-//is question mark
-bool isQuestionMark(position_t *pos);
-//get number of nearby mines
-p_number_t getNumOfMines(position_t *pos);
+/*
+ * This function returns if the position is revealed
+ * or not. It returns the stored value of the most 
+ * significant bit of the position_t pos.
+ * 
+ * @param  position_t pos - This is the position we want to get the info.
+ * @return bool           - true or false
+ */
+bool isRevealed(position_t pos);
+
+/*
+ * This function returns if the position have a mine
+ * or not. It returns the stored value of the second most 
+ * significant bit of the position_t pos.
+ * 
+ * @param  position_t pos - This is the position we want to get the info.
+ * @return bool           - true or false
+ */
+bool isMine(position_t pos);
+
+/*
+ * This function returns if the position have a flag
+ * or not. It returns the stored value of the third most 
+ * significant bit of the position_t pos.
+ * 
+ * @param  position_t pos - This is the position we want to get the info.
+ * @return bool           - true or false
+ */
+bool isFlag(position_t pos);
+
+/*
+ * This function returns if the position have a question mark
+ * or not. It returns the stored value of the fourth most 
+ * significant bit of the position_t pos.
+ * 
+ * @param  position_t pos - This is the position we want to get the info.
+ * @return bool           - true or false
+ */
+bool isQuestionMark(position_t pos);
+
+/*
+ * getNumOfMines returns the number of mines nearby the position.
+ * It returns the stored value of the four less significant bits 
+ * of the position_t pos.
+ *
+ * @param  position_t pos - This is the position we want to get the info.
+ * @return p_number_t     - Number of mines nearby the position
+ */
+p_number_t getNumOfMines(position_t pos);
 
 #endif

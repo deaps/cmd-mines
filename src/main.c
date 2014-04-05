@@ -45,8 +45,20 @@ int main()
 	position_t n4 = 148; // 10010100
 	printf("n4: %d\n", n4);
 	setNumOfMines(&n4, 8); // 10110111
-	printf("n4: %d\n", n4);
-	
-	printf("Hello World!!!\n");
+	printf("n4: %d\n\n\n", n4);
+
+	// ------------------------------------
+
+	// TEST FOR ISFUNCTIONS
+	position_t n5 = 148; // 10010100
+	printf("isRevealed     :: %d\n",isRevealed(n5));
+	printf("isMine         :: %d\n",isMine(n5));
+	printf("isFlag         :: %d\n",isFlag(n5));
+	printf("isQuestionMark :: %d\n",isQuestionMark(n5));
+	printf("getNumOfMines  :: %d\n",getNumOfMines(n5));
+
+
+
+	printf("\nHello World!!! This is Mines\n");
 	return 0;
 }
