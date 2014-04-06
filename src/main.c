@@ -5,7 +5,8 @@
 // Headers files
 #include "position.h"
 
-
+void testingPositionFunctions();
+void runTestingMode();
 
 /*
 * World-mines is a mineswepper game where you can change
@@ -15,7 +16,27 @@
 * Author: João Andrade (joaodeaps@gmail.com)
 * version: 0
 */
-int main()
+int main(void)
+{
+	// Tests
+	runTestingMode();
+	
+	return 0;
+}
+
+void runTestingMode()
+{
+	// Function testing
+	testingPositionFunctions();
+
+	//
+}
+
+
+/*
+ * The name says it all
+ */
+void testingPositionFunctions()
 {
 	// TEST FOR REVEALED BIT
 	position_t n = 148; // 10010100
@@ -60,5 +81,4 @@ int main()
 
 
 	printf("\nHello World!!! This is Mines\n");
-	return 0;
 }
