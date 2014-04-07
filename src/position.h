@@ -1,5 +1,5 @@
-#ifndef POSITION_
-#define POSITION_
+#ifndef POSITION_H
+#define POSITION_H
 
 #include <stdio.h>
 #include <stdlib.h>

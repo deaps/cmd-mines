@@ -4,9 +4,9 @@
 VPATH      = src
 CC         = gcc
 CFLAGS     = -Wall -g
-INCLUDES  = position.h
-SOURCES    = position.c main.c
-OBJFILES   = position.o main.o
+INCLUDES  = position.h gameBoard.h
+SOURCES    = position.c gameBoard.c main.c
+OBJFILES   = position.o gameBoard.o main.o
 EXECUTABLE = World-mines
 
 .SUFFIXES : .c .o

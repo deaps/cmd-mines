@@ -4,8 +4,10 @@
 
 // Headers files
 #include "position.h"
+#include "gameBoard.h"
 
 void testingPositionFunctions();
+void testingGameBoardFunctions();
 void runTestingMode();
 
 /*
@@ -14,7 +16,7 @@ void runTestingMode();
 * numbers you can change it to kanji or roman numbers.
 *
 * Author: João Andrade (joaodeaps@gmail.com)
-* version: 0
+* version: 1
 */
 int main(void)
 {
@@ -29,9 +31,23 @@ void runTestingMode()
 	// Function testing
 	testingPositionFunctions();
 
-	//
+	// gameBoard Testing
+	testingGameBoardFunctions();
+
 }
 
+void testingGameBoardFunctions()
+{
+	/* Creates a game board */
+	int x = 8;
+	int y = 8;
+	int m = 10;
+	position_t board[x][y];
+
+	createNewGame((position_t*)board, x,y,m);
+
+	showMineLayout((position_t*)board, x, y);
+}
 
 /*
  * The name says it all
