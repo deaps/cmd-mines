@@ -39,9 +39,9 @@ void runTestingMode()
 void testingGameBoardFunctions()
 {
 	/* Creates a game board */
-	int x = 16;
-	int y = 16;
-	int m = 40;
+	int x = 8;
+	int y = 8;
+	int m = 10;
 	position_t board[x][y];
 
 	createNewGame((position_t*)board, x,y,m);

@@ -7,6 +7,7 @@ void createNewGame(position_t* board, int x, int y, int m)
 
 	//position_t board[x][y];
 	printf("------- createNewGame ---------\n");
+	clearField((position_t*)board, x, y);
 	layMines((position_t*)board, x, y, m);
 
 }
@@ -15,19 +16,9 @@ void layMines(position_t* board, int x, int y, int m)
 {
 	int pos_x;
 	int pos_y;
-	int i,j;
-
-	for(i=0;i<x;i++)
-	{
-		for(j=0;j<y;j++)
-		{
-			//board[i][j]=0;
-			board[i * y + j]*=0;
-		}
-	}
+	int i;
 
 	srand(time(NULL));
-
 
 	for(i=0;i<m;i++)
 	{
@@ -51,4 +42,19 @@ void showMineLayout(position_t* board, int x, int y)
 		}
 		printf("\n");
 	}
+}
+
+void clearField(position_t* board, int x, int y)
+{
+	int i,j;
+
+	for(i=0;i<x;i++)
+	{
+		for(j=0;j<y;j++)
+		{
+			//board[i][j]=0;
+			board[i * y + j]*=0;
+		}
+	}
+
 }
