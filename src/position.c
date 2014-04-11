@@ -57,7 +57,7 @@ void changeBit(position_t *pos, bool b, short int sbit)
 	}
 } // changeBit
 
-p_number_t getBitInfo(position_t pos, short int sbit)
+number_t getBitInfo(position_t pos, short int sbit)
 {
 	// Validates if the bit position is between 1 and 8
 	if(sbit > 8 || sbit < 1)
@@ -126,7 +126,7 @@ void setQuestionMark(position_t *pos, bool b)
 	changeBit(pos, b, 5);
 } // setQuestionMark
 
-void setNumOfMines(position_t *pos, p_number_t pn)
+void setNumOfMines(position_t *pos, number_t pn)
 {
 	// Validates if the number of mines nearby is between 0 and 8
 	if(pn > 8 || pn < 0)
@@ -170,7 +170,7 @@ bool isQuestionMark(position_t pos)
 	return getBitInfo(pos, 5);
 } // isQuestionMark
 
-p_number_t getNumOfMines(position_t pos)
+number_t getNumOfMines(position_t pos)
 {
 	return getBitInfo(pos, 3);
 } // getNumOfMines

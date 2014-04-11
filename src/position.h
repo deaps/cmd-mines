@@ -32,7 +32,7 @@ typedef unsigned char position_t;
  * p_number is defined for displaying the number of mines nearby
  * of the selected position.
  */
-typedef unsigned char p_number_t;
+typedef unsigned char number_t;
 
 /*
  * This function changes the value of the selected bit of the position.
@@ -55,9 +55,9 @@ void changeBit(position_t *pos, bool b, short int sbit);
  *
  * @param position_t pos - This is the position we want to get the info.
  * @param short int sbit - This is the bit position.
- * @return p_number_t    - Value of the selected bit.
+ * @return number_t    - Value of the selected bit.
  */
-p_number_t getBitInfo(position_t pos, short int sbit);
+number_t getBitInfo(position_t pos, short int sbit);
 
 /*
  * setRevealed function changes the most significant bit, that
@@ -105,9 +105,9 @@ void setQuestionMark(position_t *pos, bool b);
  * bits of position_t pos.
  * 
  * @param position_t *pos - This is the position we want to change the info.
- * @param p_number_t pn   - Number of mines nearby.
+ * @param number_t pn   - Number of mines nearby.
  */
-void setNumOfMines(position_t *pos, p_number_t pn);
+void setNumOfMines(position_t *pos, number_t pn);
 
 /*
  * This function returns if the position is revealed
@@ -155,8 +155,8 @@ bool isQuestionMark(position_t pos);
  * of the position_t pos.
  *
  * @param  position_t pos - This is the position we want to get the info.
- * @return p_number_t     - Number of mines nearby the position
+ * @return number_t     - Number of mines nearby the position
  */
-p_number_t getNumOfMines(position_t pos);
+number_t getNumOfMines(position_t pos);
 
 #endif

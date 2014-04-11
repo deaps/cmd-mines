@@ -1,6 +1,6 @@
 #include "gameBoard.h"
 
-void createNewGame(position_t* board, int x, int y, int m)
+void createNewGame(position_t* board, number_t x, number_t y, number_t m)
 {
 	// max mines 8x8 = 64
 	//if(m >= Ver mais tarde
@@ -12,11 +12,11 @@ void createNewGame(position_t* board, int x, int y, int m)
 
 }
 
-void layMines(position_t* board, int x, int y, int m)
+void layMines(position_t* board, number_t x, number_t y, number_t m)
 {
-	int pos_x;
-	int pos_y;
-	int i;
+	number_t pos_x;
+	number_t pos_y;
+	number_t i;
 
 	srand(time(NULL));
 
@@ -30,10 +30,10 @@ void layMines(position_t* board, int x, int y, int m)
 
 }
 
-void showMineLayout(position_t* board, int x, int y)
+void showMineLayout(position_t* board, number_t x, number_t y)
 {
 	printf("\n");
-	int i,j;
+	number_t i,j;
 	for(i=0;i<x;i++)
 	{
 		for(j=0;j<y;j++)
@@ -44,9 +44,9 @@ void showMineLayout(position_t* board, int x, int y)
 	}
 }
 
-void clearField(position_t* board, int x, int y)
+void clearField(position_t* board, number_t x, number_t y)
 {
-	int i,j;
+	number_t i,j;
 
 	for(i=0;i<x;i++)
 	{

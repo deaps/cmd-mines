@@ -6,9 +6,9 @@
 
 #include "position.h"
 
-void createNewGame(position_t* board, int x, int y, int m);
-void layMines(position_t* board, int x, int y, int m);
-void showMineLayout(position_t* board, int x, int y);
-void clearField(position_t* board, int x, int y);
+void createNewGame(position_t* board, number_t x, number_t y, number_t m);
+void layMines(position_t* board, number_t x, number_t y, number_t m);
+void showMineLayout(position_t* board, number_t x, number_t y);
+void clearField(position_t* board, number_t x, number_t y);
 
 #endif
