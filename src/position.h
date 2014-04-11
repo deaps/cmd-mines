@@ -29,8 +29,9 @@
 typedef unsigned char position_t;
 
 /*
- * p_number is defined for displaying the number of mines nearby
- * of the selected position.
+ * This type will be lightweight replacement for some integer types.
+ * Use this with variables that are between 0 and 255. For other cases
+ * use int instead. 
  */
 typedef unsigned char number_t;
 

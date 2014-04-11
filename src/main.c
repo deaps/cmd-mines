@@ -45,8 +45,10 @@ void testingGameBoardFunctions()
 	position_t board[x][y];
 
 	createNewGame((position_t*)board, x,y,m);
-
+	printf(" ### MINES LAYOUT ### ");
 	showMineLayout((position_t*)board, x, y);
+	printf(" ### NEARBY MINES LAYOUT ### ");
+	showNearbyMinesLayout((position_t*)board, x, y);
 }
 
 /*
