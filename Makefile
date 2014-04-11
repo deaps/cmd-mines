@@ -14,7 +14,7 @@ EXECUTABLE = World-mines
 	${CC} -c ${CFLAGS} $<
 
 ${EXECUTABLE}: ${OBJFILES}
-	gcc -o ${EXECUTABLE} ${OBJFILES}
+	${CC} -o ${EXECUTABLE} ${OBJFILES}
 
 ${OBJFILES}: ${SOURCES} ${INCLUDES}
 
