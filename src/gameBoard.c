@@ -21,12 +21,18 @@ void layMines(position_t* board, number_t x, number_t y, number_t m)
 
 	srand(time(NULL));
 
-	for(i=0;i<m;i++)
+	while(i<m)
 	{
 		pos_x = rand() % x;
 		pos_y = rand() % y;
-		//printf("pos_x= %d pos_y= %d\n", pos_x,pos_y);
-		setMine(&board[pos_x * y + pos_y], true);
+
+		// Verify is the position already have a mine
+		if(!isMine(board[pos_x * y + pos_y]))
+		{
+			setMine(&board[pos_x * y + pos_y], true);
+			i++;
+		}
+		
 	}
 
 }
