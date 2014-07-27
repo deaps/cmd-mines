@@ -1,2 +1,2 @@
-cmd-mines
-===========
+cmd-mines (INCOMPLETE)
+======================
