@@ -1,2 +1,2 @@
-world-mines
+cmd-mines
 ===========

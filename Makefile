@@ -7,7 +7,7 @@ CFLAGS     = -Wall -g
 INCLUDES  = position.h gameBoard.h
 SOURCES    = position.c gameBoard.c main.c
 OBJFILES   = position.o gameBoard.o main.o
-EXECUTABLE = World-mines
+EXECUTABLE = cmd-mines
 
 .SUFFIXES : .c .o
 .c.o:
