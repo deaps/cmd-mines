@@ -42,7 +42,7 @@ void setNearbyMines(position_t* board, number_t x, number_t y)
 	number_t aux = 0;
 
 	number_t i,j;
-
+	// Melhorar
 	for(i = 0; i < x; i++)
 	{
 		aux=0;
@@ -172,6 +172,25 @@ void showNearbyMinesLayout(position_t* board, number_t x, number_t y)
 
 }
 
+void showRevealedLayout(position_t* board, number_t x, number_t y)
+{
+	printf("\n");
+	number_t i,j;
+	for(i=0;i<x;i++)
+	{
+		for(j=0;j<y;j++)
+		{
+			if (isRevealed(board[i * y + j]))
+			{
+				printf(" %3d ",  getNumOfMines(board[i * y + j]));
+			} else {
+				printf(" %3c ",  'X');
+			}
+		}
+		printf("\n");
+	}
+}
+
 void showMineLayout(position_t* board, number_t x, number_t y)
 {
 	printf("\n");
@@ -199,4 +218,9 @@ void clearField(position_t* board, number_t x, number_t y)
 		}
 	}
 
+}
+
+void stepOnPosition(position_t* board, number_t x, number_t y, number_t posX, number_t posY)
+{
+	setRevealed(&board[posX * y + posY], true);
 }
