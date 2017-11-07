@@ -1,18 +1,17 @@
 #include "position.h"
 
-void changeBit(position_t *pos, bool b, short int sbit)
+void changeBit(position_t *position, bool value, short int sbit)
 {
-	// Validates if the bit position is between 1 and 8
-	if(sbit > 8 || sbit < 1)
+	if(sbit < 1 || sbit > 8)
 	{
 		printf("Error! Bit position not valid!\n");
-		printf("position_t : %p\n", pos);
+		printf("position_t : %p\n", position);
 		printf("bit position : %d\n", sbit);
 		exit(-1);
 	}
 
 	position_t mask;
-	position_t bit=0;
+	position_t bit = 0;
 
 	switch(sbit)
 	{
@@ -37,39 +36,37 @@ void changeBit(position_t *pos, bool b, short int sbit)
 	}
 	
 	// get the selected bit
-	bit = *(pos) & mask;
+	bit = *(position) & mask;
 	bit = bit >> (sbit-1);
 
-
-	if(b) // if is to change to TRUE
+	if(value) // if is to change to TRUE
 	{
 		// if the position is already TRUE
-		if(bit) return;
-		else {
-			*(pos) = *(pos)|mask;
-		}
-	} else{ // if is to change to FALSE
-		if(bit) {
-			*(pos) = *(pos)^mask;
-		}
-		// if the position is already FALSE
-		else return;
-	}
-} // changeBit
+		if(bit) 
+			return;
+		*(position) = *(position) | mask;
 
-number_t getBitInfo(position_t pos, short int sbit)
+	} else // if is to change to FALSE
+	{ 
+		if(bit)
+			*(position) = *(position) ^ mask;
+		// if the position is already FALSE 
+		return;
+	}
+}
+
+number_t getBitInfo(position_t position, short int sbit)
 {
-	// Validates if the bit position is between 1 and 8
-	if(sbit > 8 || sbit < 1)
+	if(sbit < 1 || sbit > 8)
 	{
 		printf("Error! Bit position not valid!\n");
-		printf("position_t : %d\n", pos);
+		printf("position_t : %d\n", position);
 		printf("bit position : %d\n",sbit);
 		exit(-1);
 	}
 	
 	position_t mask;
-	position_t bit=0;
+	position_t bit = 0;
 
 	switch(sbit)
 	{
@@ -97,43 +94,38 @@ number_t getBitInfo(position_t pos, short int sbit)
 	}
 	
 	// get the info of the selected bit
-	bit = pos & mask;
-	return (bit >> (sbit-1));
+	bit = position & mask;
+	return (bit >> (sbit - 1));
+}
 
-} // getBit
-
-void setRevealed(position_t *pos, bool b)
+void setRevealed(position_t *position, bool value)
 {	
-	//Alters the bit
-	changeBit(pos, b, 8);
-} // setRevealed
+	changeBit(position, value, 8);
+}
 
-void setMine(position_t *pos, bool b)
+void setMine(position_t *position, bool value)
 {
-	//Alters the bit
-	changeBit(pos, b, 7);
-} // setMine
+	changeBit(position, value, 7);
+}
 
-void setFlag(position_t *pos, bool b)
+void setFlag(position_t *position, bool value)
 {
-	//Alters the bit
-	changeBit(pos, b, 6);
-} // setFlag
+	changeBit(position, value, 6);
+}
 
-void setQuestionMark(position_t *pos, bool b)
+void setQuestionMark(position_t *position, bool value)
 {
-	//Alters the bit
-	changeBit(pos, b, 5);
-} // setQuestionMark
+	changeBit(position, value, 5);
+}
 
-void setNumOfMines(position_t *pos, number_t pn)
+void setNumOfMines(position_t *position, number_t pn)
 {
 	// Validates if the number of mines nearby is between 0 and 8
-	if(pn > 8 || pn < 0)
+	if(pn < 0 || pn > 8)
 	{
 		printf("Error setting number of mines nearby!\n");
-		printf("position_t : %p\n", pos);
-		printf("Number of nearby mines : %d\n",pn);
+		printf("position_t : %p\n", position);
+		printf("Number of nearby mines : %d\n", pn);
 		exit(-1);
 	}
 
@@ -143,34 +135,33 @@ void setNumOfMines(position_t *pos, number_t pn)
 	// Gets the most significant bits
 	// And stores in n1 var
 	mask = 0b11110000;
-	n1 = *(pos)&mask;
+	n1 = *(position)&mask;
 
 	// Alters the number of mines nearby of that position
-	*(pos) = n1|pn;
+	*(position) = n1 | pn;
+}
 
-} // setNumOfMines
-
-bool isRevealed(position_t pos)
+bool isRevealed(position_t position)
 {
-	return getBitInfo(pos, 8);
-} // isRevealed
+	return getBitInfo(position, 8);
+}
 
-bool isMine(position_t pos)
+bool isMine(position_t position)
 {
-	return getBitInfo(pos, 7);
-} // isMine
+	return getBitInfo(position, 7);
+}
 
-bool isFlag(position_t pos)
+bool isFlag(position_t position)
 {
-	return getBitInfo(pos, 6);
-} // isFlag
+	return getBitInfo(position, 6);
+}
 
-bool isQuestionMark(position_t pos)
+bool isQuestionMark(position_t position)
 {
-	return getBitInfo(pos, 5);
-} // isQuestionMark
+	return getBitInfo(position, 5);
+}
 
-number_t getNumOfMines(position_t pos)
+number_t getNumOfMines(position_t position)
 {
-	return getBitInfo(pos, 3);
-} // getNumOfMines
+	return getBitInfo(position, 3);
+}

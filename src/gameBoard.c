@@ -10,7 +10,6 @@ void createNewGame(position_t* board, number_t x, number_t y, number_t m)
 	clearField((position_t*)board, x, y);
 	layMines((position_t*)board, x, y, m);
 	setNearbyMines((position_t*)board, x, y);
-
 }
 
 void layMines(position_t* board, number_t x, number_t y, number_t m)
@@ -21,7 +20,7 @@ void layMines(position_t* board, number_t x, number_t y, number_t m)
 
 	srand(time(NULL));
 
-	while(i<m)
+	while(i < m)
 	{
 		pos_x = rand() % x;
 		pos_y = rand() % y;
@@ -32,20 +31,18 @@ void layMines(position_t* board, number_t x, number_t y, number_t m)
 			setMine(&board[pos_x * y + pos_y], true);
 			i++;
 		}
-		
 	}
-
 }
 
 void setNearbyMines(position_t* board, number_t x, number_t y)
 {
 	number_t aux = 0;
 
-	number_t i,j;
+	number_t i, j;
 	// Melhorar
 	for(i = 0; i < x; i++)
 	{
-		aux=0;
+		aux = 0;
 		for(j = 0; j < y; j++)
 		{
 			aux = 0;
@@ -150,42 +147,38 @@ void setNearbyMines(position_t* board, number_t x, number_t y)
 			}
 		}
 	}
-
 }
 
 void showNearbyMinesLayout(position_t* board, number_t x, number_t y)
 {
 	printf("\n");
-	number_t i,j;
-	for(i=0;i<x;i++)
+	number_t i, j;
+
+	for(i = 0; i < x; i++)
 	{
-		for(j=0;j<y;j++)
+		for(j = 0; j < y; j++)
 		{
-			if( isMine(board[i * y + j] ) ){
+			if( isMine(board[i * y + j] ) )
 				printf(" %3c ",'X');
-			} else {
+			else
 				printf(" %3d ", getNumOfMines( board[i * y + j]) );
-			}
 		}
 		printf("\n");
 	}
-
 }
 
 void showRevealedLayout(position_t* board, number_t x, number_t y)
 {
 	printf("\n");
-	number_t i,j;
-	for(i=0;i<x;i++)
+	number_t i, j;
+	for(i = 0; i < x; i++)
 	{
-		for(j=0;j<y;j++)
+		for(j = 0; j < y; j++)
 		{
 			if (isRevealed(board[i * y + j]))
-			{
 				printf(" %3d ",  getNumOfMines(board[i * y + j]));
-			} else {
+			else
 				printf(" %3c ",  'X');
-			}
 		}
 		printf("\n");
 	}
@@ -194,10 +187,10 @@ void showRevealedLayout(position_t* board, number_t x, number_t y)
 void showMineLayout(position_t* board, number_t x, number_t y)
 {
 	printf("\n");
-	number_t i,j;
-	for(i=0;i<x;i++)
+	number_t i, j;
+	for(i = 0; i < x; i++)
 	{
-		for(j=0;j<y;j++)
+		for(j = 0; j < y; j++)
 		{
 			printf(" %3d ", isMine(board[i * y + j]) );
 		}
@@ -207,20 +200,20 @@ void showMineLayout(position_t* board, number_t x, number_t y)
 
 void clearField(position_t* board, number_t x, number_t y)
 {
-	number_t i,j;
+	number_t i, j;
 
-	for(i=0;i<x;i++)
+	for(i = 0; i < x; i++)
 	{
-		for(j=0;j<y;j++)
+		for(j = 0; j < y; j++)
 		{
 			//board[i][j]=0;
 			board[i * y + j]*=0;
 		}
 	}
-
 }
 
-void stepOnPosition(position_t* board, number_t x, number_t y, number_t posX, number_t posY)
+void stepOnPosition(position_t* board, number_t x, 
+	number_t y, number_t posX, number_t posY)
 {
 	setRevealed(&board[posX * y + posY], true);
 }

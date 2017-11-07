@@ -3,7 +3,6 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-// Headers files
 #include "position.h"
 #include "gameBoard.h"
 
@@ -46,7 +45,6 @@ void runTestingMode()
 
 void testingGameBoardFunctions()
 {
-	/* Creates a game board */
 	number_t x = 8;
 	number_t y = 8;
 	number_t m = 10;
@@ -66,10 +64,10 @@ void startGame(position_t* board, number_t x, number_t y, number_t m)
 	number_t lineIndex;
 
 	// get Row
-	printf("> ");
+	printf("Input row index > ");
 	rowIndex = getInput(x);
 	// get line
-	printf("> ");
+	printf("Input line index > ");
 	lineIndex = getInput(y);
 
 	printf("%d - %d\n", rowIndex, lineIndex);
@@ -77,7 +75,6 @@ void startGame(position_t* board, number_t x, number_t y, number_t m)
 	showRevealedLayout((position_t*) board, x, y);
 }
 
-//getInput 
 number_t getInput(number_t limit)
 {
 	number_t input;
@@ -87,12 +84,9 @@ number_t getInput(number_t limit)
 	} while (isspace(input));
 
 	if (input >= 0 && input - ASCII_OFFSET < limit)
-	{
 		return input - ASCII_OFFSET;
-	} else {
-		return -1; // = 255 
-	}
-	
+	else
+		return -1; // = 255 	
 }
 
 /*
@@ -139,8 +133,6 @@ void testingPositionFunctions()
 	printf("isFlag         :: %d\n",isFlag(n5));
 	printf("isQuestionMark :: %d\n",isQuestionMark(n5));
 	printf("getNumOfMines  :: %d\n",getNumOfMines(n5));
-
-
 
 	printf("\nHello World!!! This is Mines\n");
 }
